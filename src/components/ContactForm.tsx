@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
@@ -36,8 +36,19 @@ const ContactForm: React.FC = () => {
     reset();
   };
 
+  // Fix for focus issues - force repainting of form elements
+  useEffect(() => {
+    const formInputs = document.querySelectorAll('input, textarea, select');
+    formInputs.forEach(input => {
+      (input as HTMLElement).style.opacity = '0.99';
+      setTimeout(() => {
+        (input as HTMLElement).style.opacity = '1';
+      }, 10);
+    });
+  }, []);
+
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-20 relative z-10">
       <div className="container mx-auto px-4">
         <motion.h2 
           className="section-title"
@@ -50,14 +61,14 @@ const ContactForm: React.FC = () => {
 
         <motion.div 
           ref={ref}
-          className="max-w-2xl mx-auto mt-12"
+          className="max-w-2xl mx-auto mt-12 relative z-20"
           variants={fadeIn(0.2)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
           <form 
             onSubmit={handleSubmit(onSubmit)}
-            className="card border border-gray-800"
+            className="card border border-gray-800 relative"
             noValidate
           >
             <div className="space-y-6">
@@ -66,7 +77,7 @@ const ContactForm: React.FC = () => {
                 <input
                   id="name"
                   type="text"
-                  className={`${errors.name ? 'border-red-500 shake' : 'border-gray-700'}`}
+                  className={`${errors.name ? 'border-red-500 shake' : 'border-gray-700'} relative z-30 focus:z-30`}
                   placeholder="Your name"
                   {...register("name", { 
                     required: "Name is required",
@@ -86,7 +97,7 @@ const ContactForm: React.FC = () => {
                 <input
                   id="email"
                   type="email"
-                  className={`${errors.email ? 'border-red-500 shake' : 'border-gray-700'}`}
+                  className={`${errors.email ? 'border-red-500 shake' : 'border-gray-700'} relative z-30 focus:z-30`}
                   placeholder="Your email address"
                   {...register("email", { 
                     required: "Email is required",
@@ -106,7 +117,7 @@ const ContactForm: React.FC = () => {
                 <input
                   id="company"
                   type="text"
-                  className="border-gray-700"
+                  className="border-gray-700 relative z-30 focus:z-30"
                   placeholder="Your company"
                   {...register("company")}
                 />
@@ -116,7 +127,7 @@ const ContactForm: React.FC = () => {
                 <label htmlFor="licenseType" className="block mb-2 font-medium">License Type</label>
                 <select
                   id="licenseType"
-                  className={`${errors.licenseType ? 'border-red-500 shake' : 'border-gray-700'}`}
+                  className={`${errors.licenseType ? 'border-red-500 shake' : 'border-gray-700'} relative z-30 focus:z-30`}
                   {...register("licenseType", { required: "Please select a license type" })}
                 >
                   <option value="">Select a license type</option>
@@ -136,7 +147,7 @@ const ContactForm: React.FC = () => {
                 <textarea
                   id="message"
                   rows={4}
-                  className={`${errors.message ? 'border-red-500 shake' : 'border-gray-700'}`}
+                  className={`${errors.message ? 'border-red-500 shake' : 'border-gray-700'} relative z-30 focus:z-30`}
                   placeholder="Tell us about your license and requirements"
                   {...register("message", { 
                     required: "Message is required",
@@ -155,7 +166,7 @@ const ContactForm: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="btn btn-primary w-full"
+                className="btn btn-primary w-full relative z-30"
               >
                 Submit Inquiry
               </motion.button>
@@ -164,6 +175,18 @@ const ContactForm: React.FC = () => {
         </motion.div>
         <ToastContainer theme="dark" />
       </div>
+
+      <style>
+        {`
+          input:focus, textarea:focus, select:focus {
+            outline: 2px solid #7C3AED !important;
+            outline-offset: 2px;
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+            position: relative;
+            z-index: 30;
+          }
+        `}
+      </style>
     </section>
   );
 };

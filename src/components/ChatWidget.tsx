@@ -13,7 +13,7 @@ const ChatWidget: React.FC = () => {
 
   return (
     <motion.div 
-      className="fixed bottom-6 right-6 z-50"
+      className="fixed bottom-6 right-6 z-40"
       initial="initial"
       animate="animate"
       variants={pulseGlow}

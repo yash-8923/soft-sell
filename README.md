@@ -61,7 +61,7 @@ npm run build
 # Deploy to GitHub Pages (with gh-pages package)
 npm install -g gh-pages
 gh-pages -d dist
-```
+   ```
 
 ## 📱 Responsive Design
 

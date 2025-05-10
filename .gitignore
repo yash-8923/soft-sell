@@ -44,3 +44,4 @@ tsconfig.tsbuildinfo
 
 # System Files
 Thumbs.db.bolt/
+.bolt/

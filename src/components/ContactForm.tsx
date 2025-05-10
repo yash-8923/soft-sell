@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
@@ -21,6 +21,7 @@ const ContactForm: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const onSubmit: SubmitHandler<FormInputs> = (data) => {
     // In a real application, this would send data to a server
@@ -33,6 +34,8 @@ const ContactForm: React.FC = () => {
       pauseOnHover: true,
       draggable: true,
     });
+    setIsSubmitted(true);
+    setTimeout(() => setIsSubmitted(false), 3000); // Reset after 3 seconds
     reset();
   };
 
@@ -168,7 +171,7 @@ const ContactForm: React.FC = () => {
                 type="submit"
                 className="btn btn-primary w-full relative z-30"
               >
-                Submit Inquiry
+                {isSubmitted ? 'Successfully Sent!' : 'Submit Inquiry'}
               </motion.button>
             </div>
           </form>

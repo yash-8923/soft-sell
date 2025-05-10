@@ -1,3 +1,5 @@
+![Project Screenshot](./img.png)
+
 # SoftSell - Software License Resale Platform
 
 A modern, responsive single-page marketing website for SoftSell, showcasing a software license resale platform with interactive animations and a chat interface.
@@ -25,7 +27,7 @@ A modern, responsive single-page marketing website for SoftSell, showcasing a so
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/softsell.git
+   git clone https://github.com/yash-8923/soft-sell.git
    cd softsell
    ```
 
@@ -61,7 +63,7 @@ npm run build
 # Deploy to GitHub Pages (with gh-pages package)
 npm install -g gh-pages
 gh-pages -d dist
-   ```
+```
 
 ## 📱 Responsive Design
 

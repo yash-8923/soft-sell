@@ -1,11 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiMessageCircle } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 import { pulseGlow } from '../utils/animations';
 
 const ChatWidget: React.FC = () => {
+  const navigate = useNavigate();
+
   const handleChatClick = () => {
-    window.location.href = '/chat';
+    navigate('/chat');
   };
 
   return (

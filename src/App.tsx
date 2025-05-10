@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import HowItWorks from './components/HowItWorks';
@@ -24,24 +25,13 @@ const LoadingSpinner = () => (
   </div>
 );
 
-function App() {
+function MainLayout() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
-
-  // Check if we're on the chat page
-  const isChatPage = window.location.pathname === '/chat';
-
-  if (isChatPage) {
-    return (
-      <Suspense fallback={<LoadingSpinner />}>
-        <ChatPage />
-      </Suspense>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-dark">
@@ -62,6 +52,27 @@ function App() {
       <Footer />
       <ChatWidget />
     </div>
+  );
+}
+
+function App() {
+  const location = useLocation();
+  
+  // Only show ChatWidget on main page, not on chat page
+  const isChatPage = location.pathname === '/chat';
+
+  return (
+    <Routes>
+      <Route path="/" element={<MainLayout />} />
+      <Route 
+        path="/chat" 
+        element={
+          <Suspense fallback={<LoadingSpinner />}>
+            <ChatPage />
+          </Suspense>
+        } 
+      />
+    </Routes>
   );
 }
 

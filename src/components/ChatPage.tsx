@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMessageCircle, FiArrowLeft } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 import { chatQuestions } from '../data/data';
 import { fadeIn, scaleUp } from '../utils/animations';
 
@@ -12,6 +13,7 @@ interface Message {
 }
 
 const ChatPage: React.FC = () => {
+  const navigate = useNavigate();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 0,
@@ -63,12 +65,12 @@ const ChatPage: React.FC = () => {
         transition={{ duration: 0.3 }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-50"></div>
-        <a 
-          href="/"
+        <button 
+          onClick={() => navigate('/')}
           className="relative hover:bg-white/10 p-2 rounded-full transition-colors"
         >
           <FiArrowLeft size={24} />
-        </a>
+        </button>
         <div className="relative">
           <h3 className="font-heading font-bold text-xl">Chat with SoftSell</h3>
           <p className="text-sm opacity-90">24/7 Support</p>

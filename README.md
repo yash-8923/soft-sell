@@ -1,0 +1,73 @@
+# SoftSell - Software License Resale Platform
+
+A modern, responsive single-page marketing website for SoftSell, showcasing a software license resale platform with interactive animations and a chat interface.
+
+## 🌟 Features
+
+- Responsive dark theme UI with dynamic purple accents
+- Interactive sections with parallax and card stack animations
+- Real-time chat widget with predefined Q&A
+- Form validation and submission handling
+- Smooth scroll animations and transitions
+
+## 🛠️ Tech Stack
+
+- React 18 with TypeScript
+- Vite for fast development and building
+- Tailwind CSS for styling
+- Framer Motion for animations
+- React Hook Form for form handling
+- React Toastify for notifications
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/softsell.git
+   cd softsell
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+
+## 📱 Responsive Design
+
+- Mobile-first approach
+- Optimized for all screen sizes
+- Tailwind breakpoints for consistent layouts
+- Touch-friendly interactions
+
+## ⚡ Performance
+
+- Code splitting with React.lazy
+- Image optimization
+- Efficient animations with Framer Motion
+- Minimal dependencies
+
+## 🎨 Design Elements
+
+- Custom animations and transitions
+- Gradient overlays and glowing effects
+- Parallax scrolling
+- Card stack animations
+- Interactive hover states
+
+## 📄 License
+
+MIT License - feel free to use this project for personal or commercial purposes.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.

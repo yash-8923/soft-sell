@@ -28,7 +28,7 @@ A modern, responsive single-page marketing website for SoftSell, showcasing a so
 1. Clone the repository:
    ```bash
    git clone https://github.com/yash-8923/soft-sell.git
-   cd softsell
+   cd project
    ```
 
 2. Install dependencies:
@@ -52,18 +52,14 @@ The project is ready for deployment on platforms like Netlify, Vercel, or GitHub
 
 ### Important Notes for Deployment:
 - The project uses client-side routing with React Router
-- A `_redirects` file has been added for Netlify deployment to handle SPA routing
-- For other hosting platforms, make sure to configure your server to redirect all routes to index.html
+
+- For hosting, make sure to configure your server to redirect all routes to index.html
 
 Example deploy commands:
 ```bash
 # Build the project
 npm run build
 
-# Deploy to GitHub Pages (with gh-pages package)
-npm install -g gh-pages
-gh-pages -d dist
-```
 
 ## 📱 Responsive Design
 

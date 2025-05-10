@@ -43,4 +43,4 @@ pnpm-debug.log*
 tsconfig.tsbuildinfo
 
 # System Files
-Thumbs.db
+Thumbs.db.bolt/

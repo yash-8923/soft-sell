@@ -59,7 +59,7 @@ Example deploy commands:
 ```bash
 # Build the project
 npm run build
-
+```
 
 ## 📱 Responsive Design
 
